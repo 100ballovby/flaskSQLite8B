@@ -9,5 +9,24 @@
     <h1>Result of inserting {{ msg }}</h1>
     <h3><a href="/">Main page</a></h3>
 
+    <table>
+        <thead>
+            <td>Name</td>
+            <td>Address</td>
+            <td>City</td>
+            <td>PIN</td>
+        </thead>
+
+        {% for row in rows %}
+            <tr> <!-- table row - строка таблицы -->
+                <td>{{ row['name'] }}</td> <!-- table data - ячейка -->
+                <td>{{ row['addr'] }}</td>
+                <td>{{ row['city']}}</td>
+                <td>{{ row['pin']}}</td>
+            </tr>
+        {% endfor %}
+
+    </table>
+
 </body>
 </html>

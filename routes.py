@@ -35,4 +35,13 @@ def index():
 
 @app.route('/students')
 def list_students():
-    return render_template('list_students.html')
+    con = sql.connect('main.db')
+    con.row_factory = sql.Row  # забираю все строки из БД
+
+    cur = con.cursor()  # курсор производит все действия с БД
+    cur.execute('SELECT * FROM students')
+    # достать все данные из таблицы students
+
+    rows = cur.fetchall()  # fetchall - собрать всех студентов и записать в переменную
+
+    return render_template('result.html', rows=rows)
